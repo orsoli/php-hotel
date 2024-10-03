@@ -62,60 +62,68 @@ $hotels = [
 
 </head>
 
-<!-- [
-            'name' => 'Hotel Belvedere',
-            'description' => 'Hotel Belvedere Descrizione',
-            'parking' => true,
-            'vote' => 4,
-            'distance_to_center' => 10.4
-        ], -->
-
-
 <body>
     <!-- Container  -->
     <div class='container mx-auto py-4'>
         <!-- header  -->
         <header class="group text-center bg-primary text-white rounded-2 p-3 my-3">
             <h1>Find your next stay</h1>
-            <em class="text-warning">Search deals on hotels, homes, and much more...</em>
+            <em class="text-warning">Search deals on hotels and much more...</em>
         </header>
-        <!-- Table details  -->
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <?php foreach(array_keys($hotels[0]) as $key) { ?>
-                    <th scope="col">
-                        <?= $key ?>
-                    </th>
-                    <?php } ?>
-                </tr>
-            </thead>
-            <?php foreach($hotels as $key => $hotel){ ?>
-            <tbody>
-                <tr>
-                    <th scope="row">
-                        <?= ($key + 1) ?>
-                    </th>
-                    <td>
-                        <strong><?= $hotel["name"] ?></strong>
-                    </td>
-                    <td>
-                        <?= $hotel["description"] ?>
-                    </td>
-                    <td>
-                        <?= $hotel["parking"] ?>
-                    </td>
-                    <td>
-                        <?= $hotel["vote"] ?>
-                    </td>
-                    <td>
-                        <?= $hotel["distance_to_center"] ?>
-                    </td>
-                </tr>
-            </tbody>
+        <!-- Main -->
+        <main>
+            <!--Main Validation  -->
+            <?php if($hotels){?>
+            <!-- Table details  -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <!--Table header Validation  -->
+                        <?php if($hotels[0]){?>
+                        <!-- Get the keys in the first array using for head table dinamically  -->
+                        <?php foreach(array_keys($hotels[0]) as $key) { ?>
+                        <th scope="col">
+                            <?= strtoupper($key) ?>
+                        </th>
+                        <?php } ?>
+                        <?php }else{ ?>
+                        <em class="text-danger"><?= "Have no info for table header header" ?></em>
+                        <?php } ?>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- Using keys for the order list body and details of each hotel -->
+                        <?php foreach($hotels as $key => $hotel){ ?>
+                        <th scope="row">
+                            <?= ($key + 1) ?>
+                        </th>
+                        <td>
+                            <strong><?= $hotel["name"] ?></strong>
+                        </td>
+                        <td>
+                            <?= $hotel["description"] ?>
+                        </td>
+                        <td>
+                            <?= $hotel["parking"]? "Yes": "No" ?>
+                        </td>
+                        <td>
+                            <?= $hotel["vote"] ?>
+                        </td>
+                        <td>
+                            <?= $hotel["distance_to_center"] ?>(km)
+                        </td>
+                    </tr>
+                </tbody>
+                <?php } ?>
+            </table>
+            <?php }else{?>
+            <h1 class="text-center text-danger">
+                <?= "You have no data in the Hotels array" ?>
+            </h1>
             <?php } ?>
-        </table>
+        </main>
     </div>
 </body>
 

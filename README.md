@@ -17,3 +17,4 @@ Then, add Bootstrap and display the information using a table.**
 - Copy the array hotel's details in php
 - Print in page all array details
 - Use bootstrap for styles the results using a table
+- Added validation using condition
