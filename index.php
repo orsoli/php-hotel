@@ -46,11 +46,12 @@ $filteredHotels = array_filter($hotels, function($hotel){
         // Get dhe parking value and convert in boolean
         $parkng = $_GET["parking"]==="true"? true : false;
         return $hotel["parking"] === $parkng;
+    } elseif(isset($_GET["rate"])){
+        return $hotel["vote"] >= $_GET["rate"];
     } else {
         return $hotel;
     }    
 });
-var_dump($filteredHotels)
 ?>
 
 <!DOCTYPE html>
@@ -92,6 +93,14 @@ var_dump($filteredHotels)
                     <option value="true">Yes</option>
                     <option value="false">No</option>
                 </select>
+                <label for="rate">Ratings:</label>
+                <select class="form-control w-25" name="rate" id="rate">
+                    <option selected value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
                 <button type="submit" class="btn btn-secondary">Search</button>
             </form>
             <!--Main Validation  -->
@@ -109,9 +118,16 @@ var_dump($filteredHotels)
                             <?= strtoupper($key) ?>
                         </th>
                         <?php } ?>
-                        <?php }else{ ?>
+                        <?php }elseif(isset($filteredHotels[2])){ ?>
                         <!-- Get the keys in the first array using for head table dinamically  -->
                         <?php foreach(array_keys($filteredHotels[2]) as $key) { ?>
+                        <th scope="col">
+                            <?= strtoupper($key) ?>
+                        </th>
+                        <?php } ?>
+                        <?php }else{ ?>
+                        <!-- Get the keys in the first array using for head table dinamically  -->
+                        <?php foreach(array_keys($filteredHotels[3]) as $key) { ?>
                         <th scope="col">
                             <?= strtoupper($key) ?>
                         </th>
@@ -147,7 +163,7 @@ var_dump($filteredHotels)
             </table>
             <?php }else{?>
             <h1 class="text-center text-danger">
-                <?= "You have no data in the Hotels array" ?>
+                <?= "Empty filtered" ?>
             </h1>
             <?php } ?>
         </main>

@@ -25,3 +25,8 @@ Then, add Bootstrap and display the information using a table.**
 - Insert a button to submit form or onchange select form submit
 - Define a function to filtered the hotels based on parking value get from form
 - Print in page filtered hotels
+
+2. 
+- Use a select form searching hotels besed on rate condition
+- Get the value selected from the same button 
+- Add an if contition in filteredHotels function. To check the rate value geting from form
