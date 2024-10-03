@@ -38,6 +38,19 @@ $hotels = [
         ],
 
     ];
+
+//---  Define functions
+// Filter array hotel based on parking value
+$filteredHotels = array_filter($hotels, function($hotel){
+    if(isset($_GET["parking"])){
+        // Get dhe parking value and convert in boolean
+        $parkng = $_GET["parking"]==="true"? true : false;
+        return $hotel["parking"] === $parkng;
+    } else {
+        return $hotel;
+    }    
+});
+var_dump($filteredHotels)
 ?>
 
 <!DOCTYPE html>
@@ -72,30 +85,44 @@ $hotels = [
         </header>
         <!-- Main -->
         <main>
+            <form action="index.php" method="get">
+                <label for="parking">Parking space:</label>
+                <select class="form-control w-25" name="parking" id="parking">
+                    <option selected disabled>You need hotel with parking space</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <button type="submit" class="btn btn-secondary">Search</button>
+            </form>
             <!--Main Validation  -->
-            <?php if($hotels){?>
+            <?php if(isset($filteredHotels)){?>
             <!-- Table details  -->
-            <table class="table">
+            <table class="table border border-2 shadow mt-5">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <!--Table header Validation  -->
-                        <?php if($hotels[0]){?>
+                        <?php if(isset($filteredHotels[0])){?>
                         <!-- Get the keys in the first array using for head table dinamically  -->
-                        <?php foreach(array_keys($hotels[0]) as $key) { ?>
+                        <?php foreach(array_keys($filteredHotels[0]) as $key) { ?>
                         <th scope="col">
                             <?= strtoupper($key) ?>
                         </th>
                         <?php } ?>
                         <?php }else{ ?>
-                        <em class="text-danger"><?= "Have no info for table header header" ?></em>
+                        <!-- Get the keys in the first array using for head table dinamically  -->
+                        <?php foreach(array_keys($filteredHotels[2]) as $key) { ?>
+                        <th scope="col">
+                            <?= strtoupper($key) ?>
+                        </th>
+                        <?php } ?>
                         <?php } ?>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <!-- Using keys for the order list body and details of each hotel -->
-                        <?php foreach($hotels as $key => $hotel){ ?>
+                        <?php foreach($filteredHotels as $key => $hotel){ ?>
                         <th scope="row">
                             <?= ($key + 1) ?>
                         </th>

@@ -16,5 +16,12 @@ Then, add Bootstrap and display the information using a table.**
 ### Solution:
 - Copy the array hotel's details in php
 - Print in page all array details
-- Use bootstrap for styles the results using a table
+- Use bootstrap for page style
 - Added validation using condition
+
+### Bonus
+1. 
+- Use a select form searching hotels besed on parking condition
+- Insert a button to submit form or onchange select form submit
+- Define a function to filtered the hotels based on parking value get from form
+- Print in page filtered hotels
