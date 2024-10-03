@@ -74,25 +74,48 @@ $hotels = [
 <body>
     <!-- Container  -->
     <div class='container mx-auto py-4'>
-        <?php foreach($hotels as $hotel){ ?>
-        <h1>
-            <?= $hotel["name"] ?>
-        </h1>
-        <ul>
-            <li>
-                <?= $hotel["description"] ?>
-            </li>
-            <li>
-                <?= $hotel["parking"] ?>
-            </li>
-            <li>
-                <?= $hotel["vote"] ?>
-            </li>
-            <li>
-                <?= $hotel["distance_to_center"] ?>
-            </li>
-        </ul>
-        <?php } ?>
+        <!-- header  -->
+        <header class="group text-center bg-primary text-white rounded-2 p-3 my-3">
+            <h1>Find your next stay</h1>
+            <em class="text-warning">Search deals on hotels, homes, and much more...</em>
+        </header>
+        <!-- Table details  -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <?php foreach(array_keys($hotels[0]) as $key) { ?>
+                    <th scope="col">
+                        <?= $key ?>
+                    </th>
+                    <?php } ?>
+                </tr>
+            </thead>
+            <?php foreach($hotels as $key => $hotel){ ?>
+            <tbody>
+                <tr>
+                    <th scope="row">
+                        <?= ($key + 1) ?>
+                    </th>
+                    <td>
+                        <strong><?= $hotel["name"] ?></strong>
+                    </td>
+                    <td>
+                        <?= $hotel["description"] ?>
+                    </td>
+                    <td>
+                        <?= $hotel["parking"] ?>
+                    </td>
+                    <td>
+                        <?= $hotel["vote"] ?>
+                    </td>
+                    <td>
+                        <?= $hotel["distance_to_center"] ?>
+                    </td>
+                </tr>
+            </tbody>
+            <?php } ?>
+        </table>
     </div>
 </body>
 
