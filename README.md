@@ -11,3 +11,9 @@ Then, add Bootstrap and display the information using a table.**
 **1. Add a form at the beginning of the page that, via a GET request, allows filtering hotels that have parking.**
 
 **2. Add a second field to the form that allows filtering hotels by rating (e.g., enter 3 and get all hotels that have a rating of three stars or higher).**
+
+---
+### Solution:
+- Copy the array hotel's details in php
+- Print in page all array details
+- Use bootstrap for designe the results

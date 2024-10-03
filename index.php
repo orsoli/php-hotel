@@ -1,5 +1,43 @@
 <?php
+$hotels = [
 
+        [
+            'name' => 'Hotel Belvedere',
+            'description' => 'Hotel Belvedere Descrizione',
+            'parking' => true,
+            'vote' => 4,
+            'distance_to_center' => 10.4
+        ],
+        [
+            'name' => 'Hotel Futuro',
+            'description' => 'Hotel Futuro Descrizione',
+            'parking' => true,
+            'vote' => 2,
+            'distance_to_center' => 2
+        ],
+        [
+            'name' => 'Hotel Rivamare',
+            'description' => 'Hotel Rivamare Descrizione',
+            'parking' => false,
+            'vote' => 1,
+            'distance_to_center' => 1
+        ],
+        [
+            'name' => 'Hotel Bellavista',
+            'description' => 'Hotel Bellavista Descrizione',
+            'parking' => false,
+            'vote' => 5,
+            'distance_to_center' => 5.5
+        ],
+        [
+            'name' => 'Hotel Milano',
+            'description' => 'Hotel Milano Descrizione',
+            'parking' => true,
+            'vote' => 2,
+            'distance_to_center' => 50
+        ],
+
+    ];
 ?>
 
 <!DOCTYPE html>
@@ -24,10 +62,37 @@
 
 </head>
 
+<!-- [
+            'name' => 'Hotel Belvedere',
+            'description' => 'Hotel Belvedere Descrizione',
+            'parking' => true,
+            'vote' => 4,
+            'distance_to_center' => 10.4
+        ], -->
+
+
 <body>
     <!-- Container  -->
-    <div class='container mx-auto py-4' id='app'>
-
+    <div class='container mx-auto py-4'>
+        <?php foreach($hotels as $hotel){ ?>
+        <h1>
+            <?= $hotel["name"] ?>
+        </h1>
+        <ul>
+            <li>
+                <?= $hotel["description"] ?>
+            </li>
+            <li>
+                <?= $hotel["parking"] ?>
+            </li>
+            <li>
+                <?= $hotel["vote"] ?>
+            </li>
+            <li>
+                <?= $hotel["distance_to_center"] ?>
+            </li>
+        </ul>
+        <?php } ?>
     </div>
 </body>
 
